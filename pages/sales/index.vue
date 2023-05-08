@@ -14,14 +14,20 @@
         ></v-text-field>
       </v-col>
     </v-row>
+
+    <v-toolbar>
+      <v-toolbar-title>LISTA DE VENDAS</v-toolbar-title>
+    </v-toolbar>
     <v-data-table
       :headers="headers"
       :items="items"
       :search="search"
       mobile-breakpoint="0"
     >
-      <template #[`item.actions`]>
-        <v-icon small class="mr-2" color="blue"> mdi-pencil </v-icon>
+      <template #[`item.actions`]="{ item }">
+        <NuxtLink :to="`sales/${item.id}`">
+          <v-icon small class="mr-2" color="blue"> mdi-pencil </v-icon>
+        </NuxtLink>
       </template>
     </v-data-table>
   </v-container>

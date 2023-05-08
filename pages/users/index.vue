@@ -17,6 +17,9 @@
         <v-btn outlined color="blue" x-large to="/users/new">Adicionar usuario</v-btn>
       </v-col>
     </v-row>
+    <v-toolbar>
+      <v-toolbar-title>LISTA DE USUARIOS</v-toolbar-title>
+    </v-toolbar>
     <v-data-table
       :headers="headers"
       :items="items"

@@ -14,9 +14,15 @@
         ></v-text-field>
       </v-col>
       <v-col cols="2">
-        <v-btn outlined color="blue" x-large>Adicionar produto</v-btn>
+        <v-btn outlined color="blue" x-large to="/stock/new"
+          >Adicionar produto</v-btn
+        >
       </v-col>
     </v-row>
+
+    <v-toolbar>
+      <v-toolbar-title>LISTA DE PRODUTOS</v-toolbar-title>
+    </v-toolbar>
     <v-data-table
       :headers="headers"
       :items="items"
@@ -24,7 +30,10 @@
       mobile-breakpoint="0"
     >
       <template #[`item.actions`]="{ item }">
-        <v-icon small class="mr-2" color="blue"> mdi-pencil </v-icon>
+        <NuxtLink :to="`/stock/${item.id}`">
+          <v-icon small class="mr-2" color="blue"> mdi-pencil </v-icon>
+        </NuxtLink>
+
         <v-icon small color="pink" @click="deleteItem(item)">
           mdi-delete
         </v-icon>
@@ -50,6 +59,38 @@ export default {
         },
         {
           id: 2,
+          product: 'Ventilador 2',
+          description: 'Ventilador 220v',
+          stock: 10,
+          cor: 'Preto',
+          status: 'Ativo',
+        },
+        {
+          id: 3,
+          product: 'Ventilador 2',
+          description: 'Ventilador 220v',
+          stock: 10,
+          cor: 'Preto',
+          status: 'Ativo',
+        },
+        {
+          id: 4,
+          product: 'Ventilador 2',
+          description: 'Ventilador 220v',
+          stock: 10,
+          cor: 'Preto',
+          status: 'Ativo',
+        },
+        {
+          id: 5,
+          product: 'Ventilador 2',
+          description: 'Ventilador 220v',
+          stock: 10,
+          cor: 'Preto',
+          status: 'Ativo',
+        },
+        {
+          id: 6,
           product: 'Ventilador 2',
           description: 'Ventilador 220v',
           stock: 10,
