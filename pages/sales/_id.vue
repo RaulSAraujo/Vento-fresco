@@ -39,7 +39,7 @@
           <span class="text-h5">Rua</span>
           <v-text-field v-model="details.address" filled></v-text-field>
         </v-col>
-         <v-col cols="2">
+        <v-col cols="2">
           <span class="text-h5">Cep</span>
           <v-text-field v-model="details.cep" filled></v-text-field>
         </v-col>
@@ -65,6 +65,9 @@
 import { mapState } from 'vuex'
 export default {
   layout: 'ManagementLayout',
+  head: {
+    titleTemplate: 'Editar pedido - %s',
+  },
   computed: {
     ...mapState({
       details: (state) => state.details,

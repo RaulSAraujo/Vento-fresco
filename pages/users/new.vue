@@ -23,7 +23,9 @@
       </v-radio-group>
 
       <v-row no-gutters justify="center">
-        <v-btn outlined color="blue darking-1" x-large class="px-12">SALVAR</v-btn>
+        <v-btn outlined color="blue darking-1" x-large class="px-12"
+          >SALVAR</v-btn
+        >
       </v-row>
     </v-card>
   </v-container>
@@ -32,6 +34,9 @@
 <script>
 export default {
   layout: 'ManagementLayout',
+  head: {
+    titleTemplate: 'Novo usuario - %s',
+  },
 }
 </script>
 

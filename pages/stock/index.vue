@@ -120,6 +120,9 @@ export default {
       editedIndex: 0,
     }
   },
+  head: {
+    titleTemplate: 'Estoque - %s',
+  },
   computed: {
     headers() {
       return [

@@ -88,6 +88,9 @@ export default {
       editedIndex: 0,
     }
   },
+  head: {
+    titleTemplate: 'Usuarios - %s',
+  },
   computed: {
     headers() {
       return [

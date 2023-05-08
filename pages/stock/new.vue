@@ -46,7 +46,9 @@
 <script>
 export default {
   layout: 'ManagementLayout',
-
+  head: {
+    titleTemplate: 'Novo produto - %s',
+  },
 }
 </script>
 

@@ -137,6 +137,9 @@ export default {
       sortBy: ['Mais vendidos', 'Lançamentos'],
     }
   },
+  head: {
+    titleTemplate: 'Shop - %s',
+  },
 }
 </script>
 

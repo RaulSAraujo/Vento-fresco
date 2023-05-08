@@ -43,7 +43,12 @@
         <v-checkbox label="Lembrar da senha"></v-checkbox>
 
         <v-row no-gutters justify="center" class="my-5">
-          <v-btn outlined color="blue darken-1" class="px-10" large to="/management"
+          <v-btn
+            outlined
+            color="blue darken-1"
+            class="px-10"
+            large
+            to="/management"
             >Login</v-btn
           >
         </v-row>
@@ -66,6 +71,9 @@
 
 <script>
 export default {
+  head: {
+    titleTemplate: 'Login - %s',
+  },
   methods: {
     register() {
       this.$router.push('/register')

@@ -35,6 +35,9 @@
 import { mapState } from 'vuex'
 export default {
   layout: 'ManagementLayout',
+  head: {
+    titleTemplate: 'Editar usuario - %s',
+  },
   computed: {
     ...mapState({
       details: (state) => state.details,

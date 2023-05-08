@@ -1,6 +1,6 @@
 <template>
   <v-app-bar app>
-    <v-breadcrumbs :items="items"></v-breadcrumbs>
+    <v-breadcrumbs :items="items" large></v-breadcrumbs>
     <v-spacer></v-spacer>
     <v-avatar color="indigo" size="38px">
       <span class="white--text text-h5">RA</span>
@@ -18,15 +18,15 @@ export default {
     return {
       items: [
         {
-          text: 'Estoque',
+          text: 'Gerenciamento de estoque',
           href: '/stock',
         },
         {
-          text: 'Usuario',
+          text: 'Gerenciamento de usuarios',
           href: '/users',
         },
         {
-          text: 'Vendas',
+          text: 'Gerenciamento de vendas',
           href: '/sales',
         },
       ],

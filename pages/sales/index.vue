@@ -8,7 +8,7 @@
         <v-text-field
           v-model="search"
           filled
-          placeholder="Busque o client"
+          placeholder="Busque o cliente"
           append-icon="mdi-magnify"
           hint="Filtre por cliente, produtos, endereço ou cep."
         ></v-text-field>
@@ -55,6 +55,9 @@ export default {
         },
       ],
     }
+  },
+  head: {
+    titleTemplate: 'Vendas - %s',
   },
   computed: {
     headers() {
