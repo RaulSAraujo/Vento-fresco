@@ -13,23 +13,23 @@
     </v-row>
     <v-card class="pa-5">
       <span class="text-h5">Nome produto</span>
-      <v-text-field filled></v-text-field>
+      <v-text-field v-model="details.product" filled></v-text-field>
       <span class="text-h5">Descrição</span>
-      <v-text-field filled></v-text-field>
+      <v-text-field v-model="details.description" filled></v-text-field>
       <v-row>
         <v-col>
           <span class="text-h5">Quantidade</span>
-          <v-text-field filled></v-text-field>
+          <v-text-field v-model="details.stock" filled></v-text-field>
         </v-col>
         <v-col>
           <span class="text-h5">Cor</span>
-          <v-text-field filled></v-text-field>
+          <v-text-field v-model="details.cor" filled></v-text-field>
         </v-col>
         <v-col>
           <span class="text-h5">Status</span>
-          <v-radio-group row>
-            <v-radio value="active" label="Ativo"></v-radio>
-            <v-radio value="desactive" label="Inativo"></v-radio>
+          <v-radio-group v-model="details.status" row>
+            <v-radio value="Ativo" label="Ativo"></v-radio>
+            <v-radio value="Inativo" label="Inativo"></v-radio>
           </v-radio-group>
         </v-col>
       </v-row>
@@ -44,10 +44,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   layout: 'ManagementLayout',
-  props: {
-
+  computed: {
+    ...mapState({
+      details: (state) => state.details,
+    }),
   },
 }
 </script>

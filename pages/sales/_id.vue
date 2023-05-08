@@ -13,67 +13,42 @@
     </v-row>
     <v-card class="pa-5">
       <v-row>
-        <v-col>
+        <v-col cols="8">
           <span class="text-h5">Produto</span>
-          <v-text-field filled></v-text-field>
+          <v-text-field v-model="details.product" filled></v-text-field>
         </v-col>
-        <v-col>
-          <span class="text-h5">Descrição</span>
-          <v-text-field filled></v-text-field>
+        <v-col cols="2">
+          <span class="text-h5">Status</span>
+          <v-text-field v-model="details.status" filled></v-text-field>
         </v-col>
-        <v-col>
-          <span class="text-h5">Cor</span>
-          <v-text-field filled></v-text-field>
-        </v-col>
-        <v-col>
+        <v-col cols="2">
           <span class="text-h5">Quantidade</span>
-          <v-text-field filled></v-text-field>
+          <v-text-field v-model="details.quantity" filled></v-text-field>
         </v-col>
       </v-row>
+
       <v-row>
         <v-col>
-          <span class="text-h5">Nome</span>
-          <v-text-field filled></v-text-field>
-        </v-col>
-        <v-col>
-          <span class="text-h5">Email</span>
-          <v-text-field filled></v-text-field>
-        </v-col>
-        <v-col>
-          <span class="text-h5">Cpf/Cnpj</span>
-          <v-text-field filled></v-text-field>
-        </v-col>
-        <v-col>
-          <span class="text-h5">Telefone</span>
-          <v-text-field filled></v-text-field>
+          <span class="text-h5">Nome completo</span>
+          <v-text-field v-model="details.client" filled></v-text-field>
         </v-col>
       </v-row>
+
       <v-row>
-        <v-col>
+        <v-col cols="10">
           <span class="text-h5">Rua</span>
-          <v-text-field filled></v-text-field>
+          <v-text-field v-model="details.address" filled></v-text-field>
         </v-col>
-        <v-col>
-          <span class="text-h5">Bairro</span>
-          <v-text-field filled></v-text-field>
-        </v-col>
-        <v-col>
+         <v-col cols="2">
           <span class="text-h5">Cep</span>
-          <v-text-field filled></v-text-field>
-        </v-col>
-        <v-col>
-          <span class="text-h5">Complemento</span>
-          <v-text-field filled></v-text-field>
+          <v-text-field v-model="details.cep" filled></v-text-field>
         </v-col>
       </v-row>
+
       <v-row>
-        <v-col>
-          <span class="text-h5">Pagamento</span>
-          <v-text-field filled></v-text-field>
-        </v-col>
         <v-col>
           <span class="text-h5">Valor</span>
-          <v-text-field filled></v-text-field>
+          <v-text-field v-model="details.value" filled></v-text-field>
         </v-col>
       </v-row>
 
@@ -87,9 +62,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   layout: 'ManagementLayout',
-  props: {},
+  computed: {
+    ...mapState({
+      details: (state) => state.details,
+    }),
+  },
 }
 </script>
 

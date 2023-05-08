@@ -10,7 +10,7 @@
           filled
           placeholder="Busque o produto"
           append-icon="mdi-magnify"
-          hint="Filtre por produto, descrição, cor, estoque ou status"
+          hint="Filtre por produto, descrição, cor, estoque ou status."
         ></v-text-field>
       </v-col>
       <v-col cols="2">
@@ -31,7 +31,9 @@
     >
       <template #[`item.actions`]="{ item }">
         <NuxtLink :to="`/stock/${item.id}`">
-          <v-icon small class="mr-2" color="blue"> mdi-pencil </v-icon>
+          <v-icon small class="mr-2" color="blue" @click="setDetail(item)">
+            mdi-pencil
+          </v-icon>
         </NuxtLink>
 
         <v-icon small color="pink" @click="deleteItem(item)">
@@ -39,10 +41,26 @@
         </v-icon>
       </template>
     </v-data-table>
+
+    <v-snackbar
+      v-model="snack"
+      color="blue"
+      top
+      centered
+      outlined
+      rounded="xl"
+      :timeout="-1"
+    >
+      Deseja deletar o produto ?
+
+      <v-btn color="green" plain @click="snack = false">Não</v-btn>
+      <v-btn color="pink" plain @click="removeItem">Sim</v-btn>
+    </v-snackbar>
   </v-container>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   layout: 'ManagementLayout',
   data() {
@@ -62,42 +80,44 @@ export default {
           product: 'Ventilador 2',
           description: 'Ventilador 220v',
           stock: 10,
-          cor: 'Preto',
+          cor: 'Verde',
           status: 'Ativo',
         },
         {
           id: 3,
-          product: 'Ventilador 2',
-          description: 'Ventilador 220v',
-          stock: 10,
-          cor: 'Preto',
+          product: 'Ventilador 3',
+          description: 'Ventilador 120v',
+          stock: 2,
+          cor: 'Branco',
           status: 'Ativo',
         },
         {
           id: 4,
-          product: 'Ventilador 2',
+          product: 'Ventilador 4',
           description: 'Ventilador 220v',
-          stock: 10,
-          cor: 'Preto',
+          stock: 50,
+          cor: 'Vermelho',
           status: 'Ativo',
         },
         {
           id: 5,
-          product: 'Ventilador 2',
-          description: 'Ventilador 220v',
-          stock: 10,
-          cor: 'Preto',
+          product: 'Ventilador 5',
+          description: 'Ventilador 120v',
+          stock: 40,
+          cor: 'Azul',
           status: 'Ativo',
         },
         {
           id: 6,
-          product: 'Ventilador 2',
+          product: 'Ventilador 6',
           description: 'Ventilador 220v',
-          stock: 10,
-          cor: 'Preto',
+          stock: 30,
+          cor: 'Amarelo',
           status: 'Ativo',
         },
       ],
+      snack: false,
+      editedIndex: 0,
     }
   },
   computed: {
@@ -129,9 +149,19 @@ export default {
     },
   },
   methods: {
+    ...mapMutations({
+      setDetails: 'setDetails',
+    }),
+    setDetail(details) {
+      this.setDetails(details)
+    },
     deleteItem(item) {
-      const editedIndex = this.items.indexOf(item)
-      this.items.splice(editedIndex, 1)
+      this.editedIndex = this.items.indexOf(item)
+      this.snack = true
+    },
+    removeItem() {
+      this.items.splice(this.editedIndex, 1)
+      this.snack = false
     },
   },
 }

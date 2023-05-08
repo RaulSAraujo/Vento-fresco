@@ -25,8 +25,10 @@
       mobile-breakpoint="0"
     >
       <template #[`item.actions`]="{ item }">
-        <NuxtLink :to="`sales/${item.id}`">
-          <v-icon small class="mr-2" color="blue"> mdi-pencil </v-icon>
+        <NuxtLink :to="`/sales/${item.id}`">
+          <v-icon small class="mr-2" color="blue" @click="setDetail(item)">
+            mdi-pencil
+          </v-icon>
         </NuxtLink>
       </template>
     </v-data-table>
@@ -34,6 +36,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   layout: 'ManagementLayout',
   data() {
@@ -83,7 +86,14 @@ export default {
       ]
     },
   },
-  methods: {},
+  methods: {
+    ...mapMutations({
+      setDetails: 'setDetails',
+    }),
+    setDetail(details) {
+      this.setDetails(details)
+    },
+  },
 }
 </script>
 

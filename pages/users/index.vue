@@ -14,7 +14,9 @@
         ></v-text-field>
       </v-col>
       <v-col cols="2">
-        <v-btn outlined color="blue" x-large to="/users/new">Adicionar usuario</v-btn>
+        <v-btn outlined color="blue" x-large to="/users/new"
+          >Adicionar usuario</v-btn
+        >
       </v-col>
     </v-row>
     <v-toolbar>
@@ -27,16 +29,36 @@
       mobile-breakpoint="0"
     >
       <template #[`item.actions`]="{ item }">
-        <v-icon small class="mr-2" color="blue"> mdi-pencil </v-icon>
+        <NuxtLink :to="`/users/${item.id}`">
+          <v-icon small class="mr-2" color="blue" @click="setDetail(item)">
+            mdi-pencil
+          </v-icon>
+        </NuxtLink>
         <v-icon small color="pink" @click="deleteItem(item)">
           mdi-delete
         </v-icon>
       </template>
     </v-data-table>
+
+    <v-snackbar
+      v-model="snack"
+      color="blue"
+      top
+      centered
+      outlined
+      rounded="xl"
+      :timeout="-1"
+    >
+      Deseja deletar o produto ?
+
+      <v-btn color="green" plain @click="snack = false">Não</v-btn>
+      <v-btn color="pink" plain @click="removeItem">Sim</v-btn>
+    </v-snackbar>
   </v-container>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   layout: 'ManagementLayout',
   data() {
@@ -62,6 +84,8 @@ export default {
           status: 'Desativo',
         },
       ],
+      snack: false,
+      editedIndex: 0,
     }
   },
   computed: {
@@ -81,9 +105,19 @@ export default {
     },
   },
   methods: {
+    ...mapMutations({
+      setDetails: 'setDetails',
+    }),
+    setDetail(details) {
+      this.setDetails(details)
+    },
     deleteItem(item) {
-      const editedIndex = this.items.indexOf(item)
-      this.items.splice(editedIndex, 1)
+      this.editedIndex = this.items.indexOf(item)
+      this.snack = true
+    },
+    removeItem() {
+      this.items.splice(this.editedIndex, 1)
+      this.snack = false
     },
   },
 }
