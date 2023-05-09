@@ -2,11 +2,6 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  routeRules: {
-    '/examples/*': { redirect: '/redirect-route' },
-    '/modify-headers-route': { headers: { 'x-magic-of': 'nuxt and vercel' } },
-    '/spa': { ssr: false },
-  },
   head: {
     title: 'Vento Fresco',
     htmlAttrs: {
